@@ -574,15 +574,14 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"shh_subscribe","params":["messag
   "params": {
     subscription: "02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412",
     result: {
-      "sig": "0x048229fb947363cf13bb9f9532e124f08840cd6287ecae6b537cda2947ec2b23dbdc3a07bdf7cd2bfb288c25c4d0d0461d91c719da736a22b7bebbcf912298d1e6",
-      "ttl": "0x34",
-      "timestamp": "0xa34444",
-      "topic": "0x5a4ea131",
-      "payload": "0x3456435243142fdf1d2312",
-      "padding": "0xaaa3df1d231456435243142f456435243142f2",
-      "pow": "0xa",(?)
-      "hash": "0xddaa3df1d231456435243142af45aa3df1d2314564352431426435243142f2",
-      "recipientPublicKey": "0x04d1574d4eab8f3dde4d2dc7ed2c4d699d77cbbdd09167b8fffa099652ce4df00c4c6e0263eafe05007a46fdf0c8d32b11aeabcd3abbc7b2bc2bb967368a68e9c6"
+      sig: '0x0498ac1951b9078a0549c93c3f6088ec7c790032b17580dc3c0c9e900899a48d89eaa27471e3071d2de6a1f48716ecad8b88ee022f4321a7c29b6ffcbee65624ff',
+      ttl: 10,
+      timestamp: 1498577270,
+      topic: '0xffaadd11',
+      payload: '0xffffffdddddd1122',
+      padding: '0x35d017b66b124dd4c67623ed0e3f23ba68e3428aa500f77aceb0dbf4b63f69ccfc7ae11e39671d7c94f1ed170193aa3e327158dffdd7abb888b3a3cc48f718773dc0a9dcf1a3680d00fe17ecd4e8d5db31eb9a3c8e6e329d181ecb6ab29eb7a2d9889b49201d9923e6fd99f03807b730780a58924870f541a8a97c87533b1362646e5f573dc48382ef1e70fa19788613c9d2334df3b613f6e024cd7aadc67f681fda6b7a84efdea40cb907371cd3735f9326d02854',
+      pow: 0.6714754098360656,
+      hash: '0x17f8066f0540210cf67ef400a8a55bcb32a494a47f91a0d26611c5c1d66f8c57'
     }
   }
 }
