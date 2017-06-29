@@ -540,6 +540,7 @@ Either `symKeyID` or `privateKeyID` must be present. Can not be both.
 
 `Object`: The whisper message matching the subscription options, with the following parameters:
   - `sig` - `String`: Public key who signed this message.
+  - `recipientPublicKey` - `String`: The recipients public key.
   - `ttl` - `Number`: Time-to-live in seconds.
   - `timestamp` - `Number`: Unix timestamp of the message genertion.
   - `topic` - `String` 4 Bytes: Message topic.
@@ -575,6 +576,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"shh_subscribe","params":["messag
     subscription: "02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412",
     result: {
       sig: '0x0498ac1951b9078a0549c93c3f6088ec7c790032b17580dc3c0c9e900899a48d89eaa27471e3071d2de6a1f48716ecad8b88ee022f4321a7c29b6ffcbee65624ff',
+      recipientPublicKey: null,
       ttl: 10,
       timestamp: 1498577270,
       topic: '0xffaadd11',
@@ -651,15 +653,15 @@ Uninstall a message filter in the node
  
 ##### Returns
 
-`String`: filter identifier
+`Boolean`: `true` on success, error on failure.
 
 ##### Example
 ```
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"shh_newMessageFilter","params":[{"symKeyID": "3742c75e4232325d54143707e4b73d17c2f86a5e4abe3359021be5653f5b2c81"}],"id":1}' localhost:8545
+curl -X POST --data '{"jsonrpc":"2.0","method":"shh_deleteMessageFilter","params":[{"symKeyID": "3742c75e4232325d54143707e4b73d17c2f86a5e4abe3359021be5653f5b2c81"}],"id":1}' localhost:8545
 
 // Result
-{"jsonrpc":"2.0","id":1,"result":"2b47fbafb3cce24570812a82e6e93cd9e2551bbc4823f6548ff0d82d2206b326"}
+{"jsonrpc":"2.0","id":1,"result": true}
 
 ```
 
