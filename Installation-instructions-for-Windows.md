@@ -39,6 +39,12 @@ Please ensure that the installed Go version is 1.7 (or any later version).
 First we'll create and set up a Go workspace directory layout,
 then clone the source.
 
+***OBS*** If, during the commands below, you get the following message: 
+```
+ WARNING: The data being saved is truncated to 1024 characters.
+```
+Then that means that the `setx` command will fail, and proceeding will truncate the `Path`/`GOPATH`. If this happens, it's better to abort, and try to make some more room in `Path` before trying again. 
+
 ```text
 C:\Users\xxx> set "GOPATH=%USERPROFILE%"
 C:\Users\xxx> set "Path=%USERPROFILE%\bin;%Path%"
