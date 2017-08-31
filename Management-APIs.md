@@ -87,13 +87,13 @@ extra management API namespaces:
 
 | [admin](#admin)              | [debug](#debug)                                   | [miner](#miner)                     | [personal](#personal)                    | [txpool](#txpool)          |
 | :--------------------------- | :-----------------------------------------------  | :---------------------------------- | :--------------------------------------- | :------------------------- |
-| [addPeer](#admin_addpeer)    | [backtraceAt](#debug_backtraceAt)                 | [makeDAG](#miner_makedag)           | [ecRecover](#personal_ecrecover)         | [content](#txpool_content) |
-| [datadir](#datadir)          | [blockProfile](#debug_blockProfile)               | [setExtra](#miner_setextra)         | [importRawKey](#personal_importrawkey)   | [inspect](#txpool_inspect) |
-| [nodeInfo](#admin_nodeinfo)  | [cpuProfile](#debug_cpuProfile)                   | [setGasPrice](#miner_setgasprice)   | [listAccounts](#personal_listaccounts)   | [status](#txpool_status)   |
-| [peers](#admin_peers)        | [dumpBlock](#debug_dumpblock)                     | [start](#miner_start)               | [lockAccount](#personal_lockaccount)     |                            |
-| [setSolc](#admin_setcolc)    | [gcStats](#debug_gcStats)                         | [startAutoDAG](#miner_startautodag) | [newAccount](#personal_newaccount)       |                            |
-| [startRPC](#admin_startrpc)  | [getBlockRlp](#debug_getblockrlp)                 | [stop](#miner_stop)                 | [unlockAccount](#personal_unlockaccount) |                            |
-| [startWS](#admin_startws)    | [goTrace](#debug_goTrace)                         | [stopAutoDAG](#miner_stopAutodag)   | [sendTransaction](#personal_sendtransaction) |                        |
+| [addPeer](#admin_addpeer)    | [backtraceAt](#debug_backtraceAt)                 | [setExtra](#miner_setextra)         | [ecRecover](#personal_ecrecover)         | [content](#txpool_content) |
+| [datadir](#datadir)          | [blockProfile](#debug_blockProfile)               | [setGasPrice](#miner_setgasprice)   | [importRawKey](#personal_importrawkey)   | [inspect](#txpool_inspect) |
+| [nodeInfo](#admin_nodeinfo)  | [cpuProfile](#debug_cpuProfile)                   | [start](#miner_start)               | [listAccounts](#personal_listaccounts)   | [status](#txpool_status)   |
+| [peers](#admin_peers)        | [dumpBlock](#debug_dumpblock)                     | [stop](#miner_stop)                 | [lockAccount](#personal_lockaccount)     |                            |
+| [setSolc](#admin_setcolc)    | [gcStats](#debug_gcStats)                         | [getHashrate](#miner_gethashrate)   | [newAccount](#personal_newaccount)       |                            |
+| [startRPC](#admin_startrpc)  | [getBlockRlp](#debug_getblockrlp)                 | [setEtherbase](#miner_setEtherbase) | [unlockAccount](#personal_unlockaccount) |                            |
+| [startWS](#admin_startws)    | [goTrace](#debug_goTrace)                         |                                     | [sendTransaction](#personal_sendtransaction) |                        |
 | [stopRPC](#admin_stoprpc)    | [memStats](#debug_memStats)                       |                                     | [sign](#personal_sign)                   |                            |
 | [stopWS](#admin_stopws)      | [seedHash](#debug_seedhash)[sign](#personal_sign)|                                      |                                          |                            |
 |                              | [setBlockProfileRate](#debug_setBlockProfileRate) |                                     |                                          |                            |
@@ -868,19 +868,6 @@ flag.
 The `miner` API allows you to remote control the node's mining operation and set various
 mining specific settings.
 
-### miner_makeDAG
-
-Initiates a new DAG creation process for the given block number. This procces is 
-required for the CPU (and GPU) mining operations unless [auto DAG generation](#miner_startautodag) is
-turned on. This also allows you to create DAGs far in advance and might be diserable for slower
-running devices.
-
-| Client  | Method invocation                                 |
-|:-------:|---------------------------------------------------|
-| Go      | `miner.MakeDAG(number *rpc.HexNumber) bool`       |
-| Console | `miner.makeDAG(number)`                           |
-| RPC     | `{"method": "miner_makeDAG", "params": [number]}` |
-
 ### miner_setExtra
 
 Sets the extra data a miner can include when miner blocks. This is capped at
@@ -915,18 +902,6 @@ if need be.
 | Console | `miner.start(number)`                               |
 | RPC     | `{"method": "miner_start", "params": [number]}`     |
 
-### miner_startAutoDAG
-
-Pregenerate the DAG, this will allow for a seamless transition between the different
-epochs. If not enabled the miner will need to generate the DAG when a new epoch begins
-(each 30k blocks). This takes some time and will stop the miner until the DAG is
-generated.
-
-| Client  | Method invocation                                      |
-|:-------:|--------------------------------------------------------|
-| Go      | `miner.StartAutoDAG() bool`                            |
-| Console | `miner.startAutoDAG()`                                 |
-| RPC     | `{"method": "miner_startAutoDAG", "params": [number]}` |
 
 ### miner_stop
 
@@ -938,15 +913,16 @@ Stop the CPU mining operation.
 | Console | `miner.stop()`                               |
 | RPC     | `{"method": "miner_stop", "params": []}`     |
 
-### miner_stopAutoDAG
 
-Stop DAG pregeneration.
+### miner_setEtherBase
 
-| Client  | Method invocation                               |
-|:-------:|-------------------------------------------------|
-| Go      | `miner.StopAutoDAG() bool`                      |
-| Console | `miner.setGasPrice()`                           |
-| RPC     | `{"method": "miner_stopAutoDAG", "params": []}` |
+Sets the etherbase, where mining rewards will go. 
+
+| Client  | Method invocation                                           |
+|:-------:|-------------------------------------------------------------|
+| Go      | `miner.SetEtherbase(common.Address) bool`                   |
+| Console | `miner.setEtherbase(address)`                               |
+| RPC     | `{"method": "miner_setEtherbase", "params": [address]}`     |
 
 
 ## Personal
