@@ -181,9 +181,6 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) DeleteSymKey(ctx context.Context, name string) (bool, error)
-</code></pre>
-
 Deletes the key associated with the name string if it exists.
 
 geth console call:
@@ -193,27 +190,11 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) GetNewSubscriptionMessages(id string) []*WhisperMessage
-</code></pre>
-
 Retrieves all the new messages matched by a filter since the last retrieval.
 
 geth console call:
 
 <pre><code> > shh.getNewSubscriptionMessages("02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412")
-</code></pre>
-
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) GetFloatingMessages(id string) []WhisperMessage
-</code></pre>
-
-Retrieves all the floating messages that match a specific filter.
-It is likely to be called once per session, right after Subscribe call.
-
-geth console call:
-
-<pre><code> > shh.getFloatingMessages("02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412")
 </code></pre>
 
 <hr>
