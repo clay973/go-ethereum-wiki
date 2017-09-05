@@ -1,6 +1,6 @@
 ## Whisper API Overview
 
-<pre><code>func (self *PublicWhisperAPI) Version() (*rpc.HexNumber, error)
+<pre><code>func (self *PublicWhisperAPI) Version(ctx context.Context) (string)
 </code></pre>
 
 Returns the Whisper version this node offers.
@@ -12,56 +12,56 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) Info() (string, error)
+<pre><code>func (self *PublicWhisperAPI) Info(ctx context.Context) (string, error)
 </code></pre>
 
 Returns the Whisper statistics for diagnostics.
 
 geth console call:
 
-<pre><code> > shh.info()
+<pre><code> > shh.info
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) SetMaxMessageLength(val int) error
+<pre><code>func (self *PublicWhisperAPI) SetMaxMessageSize(ctx context.Context, val int) error
 </code></pre>
 
 Sets the maximal message length allowed by this node.
 
 geth console call:
 
-<pre><code> > shh.setMaxMessageLength(999999)
+<pre><code> > shh.setMaxMessageSize(999999)
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) SetMinimumPoW(val float64) error
+<pre><code>func (self *PublicWhisperAPI) SetMinPoW(ctx context.Context, val float64) error
 </code></pre>
 
 Sets the minimal PoW required by this node.
 
 geth console call:
 
-<pre><code> > shh.setMinimumPoW(2.12)
+<pre><code> > shh.setMinPoW(2.12)
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) AllowP2PMessagesFromPeer(enode string) error
+<pre><code>func (self *PublicWhisperAPI) MarkTrustedPeer(ctx context.Context, enode string) error
 </code></pre>
 
 Marks specific peer trusted, which will allow it to send historic (expired) messages.
 
 geth console call:
 
-<pre><code> > shh.allowP2PMessagesFromPeer("enode://d25474361659861e9e651bc728a17e807a3359ca0d344afd544ed0f11a31faecaf4d74b55db53c6670fd624f08d5c79adfc8da5dd4a11b9213db49a3b750845e@52.178.209.125:30379")
+<pre><code> > shh.markTrustedPeer("enode://d25474361659861e9e651bc728a17e807a3359ca0d344afd544ed0f11a31faecaf4d74b55db53c6670fd624f08d5c79adfc8da5dd4a11b9213db49a3b750845e@52.178.209.125:30379")
 
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) HasKeyPair(id string) (bool, error)
+<pre><code>func (self *PublicWhisperAPI) HasKeyPair(ctx context.Context, id string) (bool, error)
 </code></pre>
 
 Checks if the whisper node is configured with the private key of the specified public pair.
@@ -73,7 +73,7 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) DeleteKeyPair(id string) error
+<pre><code>func (self *PublicWhisperAPI) DeleteKeyPair(ctx context.Context, id string) error
 </code></pre>
 
 Deletes the specifies key if it exists.
@@ -85,7 +85,7 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) NewKeyPair() (string, error)
+<pre><code>func (self *PublicWhisperAPI) NewKeyPair(ctx context.Context) (string, error)
 </code></pre>
 
 Generates a new cryptographic identity for the client, and injects it into the known identities for message decryption.
@@ -97,7 +97,7 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) GetPublicKey(id string) (hexutil.Bytes, error)
+<pre><code>func (self *PublicWhisperAPI) GetPublicKey(ctx context.Context, id string) (hexutil.Bytes, error)
 </code></pre>
 
 Returns the public key for identity id.
@@ -109,7 +109,7 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) GetPrivateKey(id string) (string, error)
+<pre><code>func (self *PublicWhisperAPI) GetPrivateKey(ctx context.Context, id string) (string, error)
 </code></pre>
 
 Returns the private key for identity id.
@@ -121,74 +121,74 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) GenerateSymmetricKey() (string, error)
+<pre><code>func (self *PublicWhisperAPI) NewSymKey(ctx context.Context) (string, error)
 </code></pre>
 
 Generates a random symmetric key and stores it under id, which is then returned. Will be used in the future for session key exchange.
 
 geth console call:
 
-<pre><code> > shh.generateSymmetricKey()
+<pre><code> > shh.newSymKey()
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) AddSymmetricKeyDirect(key hexutil.Bytes) (string, error)
+<pre><code>func (self *PublicWhisperAPI) AddSymKey(ctx context.Context, key hexutil.Bytes) (string, error)
 </code></pre>
 
 Stores the key, and returns its id.
 
 geth console call:
 
-<pre><code> > shh.addSymmetricKeyDirect("0xf6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
+<pre><code> > shh.addSymKey("0xf6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) AddSymmetricKeyFromPassword(password string) (string, error)
+<pre><code>func (self *PublicWhisperAPI) GenerateSymKeyFromPassword(ctx context.Context, password string) (string, error)
 </code></pre>
 
 Generates the key from password, stores it, and returns its id.
 
 geth console call:
 
-<pre><code> > shh.addSymmetricKeyFromPassword("test")
+<pre><code> > shh.generateSymKeyFromPassword("test")
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) GetSymmetricKey(name string) (hexutil.Bytes, error)
+<pre><code>func (self *PublicWhisperAPI) GetSymKey(ctx context.Context, name string) (hexutil.Bytes, error)
 </code></pre>
 
 Returns the symmetric key associated with the given id.
 
 geth console call:
 
-<pre><code> > shh.getSymmetricKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
+<pre><code> > shh.getSymKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) HasSymmetricKey(id string) (bool, error)
+<pre><code>func (self *PublicWhisperAPI) HasSymKey(ctx context.Context, id string) (bool, error)
 </code></pre>
 
 Returns true if there is a key associated with the name string. Otherwise, returns false.
 
 geth console call:
 
-<pre><code> > shh.hasSymmetricKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
+<pre><code> > shh.hasSymKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) DeleteSymmetricKey(name string) (bool, error)
+<pre><code>func (self *PublicWhisperAPI) DeleteSymKey(ctx context.Context, name string) (bool, error)
 </code></pre>
 
 Deletes the key associated with the name string if it exists.
 
 geth console call:
 
-<pre><code> > shh.deleteSymmetricKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
+<pre><code> > shh.deleteSymKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
 <hr>
@@ -244,7 +244,7 @@ geth console call:
 
 <hr>
 
-<pre><code>func (self *PublicWhisperAPI) Post(args PostArgs) error
+<pre><code>func (self *PublicWhisperAPI) Post(ctx context.Context, req NewMessage) error
 </code></pre>
 
 Creates a whisper message and injects it into the network for distribution.
@@ -290,10 +290,10 @@ allowP2P: Indicates if this filter allows processing of direct peer-to-peer mess
 
 The argument of Post function is a JSON object with the following format:
 
-	type       string
-	ttl        uint32
+	symKeyID   string
+	pubKey     []byte
 	sig        string
-	key        string
+	ttl        uint32
 	topic      [4]byte
 	padding    []byte
 	payload    []byte
@@ -301,13 +301,13 @@ The argument of Post function is a JSON object with the following format:
 	powTarget  float64
 	targetPeer string
 	
-type: Encryption type (symetric/asymmetric). The only valid values are "sym" or "asym".
+symKeyID: When using symmetric key encryption, holds the symmetric key ID.
+
+pubKey: When using asymmetric key encryption, holds the public key.
 
 ttl: Time-to-live in seconds.
 
 sig: ID of the signing key.
-
-key: Key ID (in case of symmetric encryption) or public key (in case of asymmetric).
 
 topic: Message topic (four bytes of arbitrary data).
 
@@ -338,7 +338,7 @@ More info on wnode tool you can find in a separate document [here](https://githu
 
 Start your geth with the following parameters:
 
-	geth --shh --testnet --nodiscover console
+	> geth --shh --testnet --nodiscover console
 	
 Then connect to the bootstrap node, e.g.:
 	admin.addPeer("enode://0f7f440d473c92e3734e5b93e30eb131f5a065a3673b0d191481267e777e508884ae6bd9d1aca3b995bc5044917248009877488c30f7fdd7c2f63823e4dd55dc@127.0.0.1:30379")
@@ -401,7 +401,7 @@ result:
 
 #### Send (asymmetric encryption)
 
-	> shh.post({type: 'asym', ttl: 7, powTarget: 2.5 powTime: 2, payload: '0x7777777777777777', key: '0x048d7938066b4fb9465879c837762a767648e9473e0a6a470d719f71024d4a59450b2151b303b5f90ea35fd2e8cd91968783da17add12973e9867c626750bae3e9'})
+	> shh.post({ttl: 7, powTarget: 2.5 powTime: 2, payload: '0x7777777777777777', pubKey: '0x048d7938066b4fb9465879c837762a767648e9473e0a6a470d719f71024d4a59450b2151b303b5f90ea35fd2e8cd91968783da17add12973e9867c626750bae3e9'})
 
 In this message neither Topic nor Signature is set. Payload is equivalent to an ASCII string "wwwwwwww".
 
@@ -411,7 +411,7 @@ In order to engage in symmetrically encrypted communication, both the parties mu
 
 Derive symmetric key from the password, and save its ID.
 
-	> id = shh.addSymmetricKeyFromPassword('test')
+	> id = shh.generateSymKeyFromPassword('test')
 	"de6bc568f8601fac6ff2085d17c02754348ddbf4122ab1bd543a40c68d3a45fe"
 
 Subcribe to messages, encrypted with this symmetric key.
@@ -448,11 +448,11 @@ result:
 
 #### Send (symmetric encryption)
 
-	> shh.post({type: 'sym', ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', key: id})
+	> shh.post({ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', symKeyID: id})
 
 or
 
-	> shh.post({type: 'sym', ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', key: 'de6bc568f8601fac6ff2085d17c02754348ddbf4122ab1bd543a40c68d3a45fe'})
+	> shh.post({ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', symKeyID: 'de6bc568f8601fac6ff2085d17c02754348ddbf4122ab1bd543a40c68d3a45fe'})
 	
 If you want to sign messages you should first generate the signing key (same as asymmetric key)
 
@@ -461,24 +461,24 @@ If you want to sign messages you should first generate the signing key (same as 
 	
 and then add another parameter to the post 
 
-	> shh.post({sig: s, type: 'sym', ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', key: id})
+	> shh.post({sig: s, ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', symKeyID: id})
 
 #### Engage in a Chat with One-Time Session Key (for plausible deniability)
 
 Generate symmetric key, and save its ID.
 
-	> id = shh.generateSymmetricKey()
+	> id = shh.newSymKey()
 	"ee3ece1e35c0d3e5bd2e878dd66bf0c25b7e10df3d6b092591adca69189a6c32"
 
 Retrieve the newly created symmetric key.
 
-	> shh.getSymmetricKey(id)
+	> shh.getSymKey(id)
 	"3f4e735996b400637b3530d41d8bf8e0cbeafaf299aa0ad408c579569fd0af8c"
 
 Send the raw key and Topic to you peer via a secure communication channel.
 The peer should install the raw key:
 
-	> id = shh.addSymmetricKeyDirect('0x3f4e735996b400637b3530d41d8bf8e0cbeafaf299aa0ad408c579569fd0af8c')
+	> id = shh.addSymKey('0x3f4e735996b400637b3530d41d8bf8e0cbeafaf299aa0ad408c579569fd0af8c')
 	"be14387971d31c6a2997dac5062978294f52a145e5a0a0a2caa4b37dbec9bb13"
 
 Both peers (or even multiple participants) subscribe to messages, encrypted with certain key and topic.
