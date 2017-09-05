@@ -1,7 +1,8 @@
 ## Whisper API Overview
 
-<pre><code>func (self *PublicWhisperAPI) Version(ctx context.Context) (string)
-</code></pre>
+This is a summary of all functions that are available to the ÐApp developpers.
+
+### version
 
 Returns the Whisper version this node offers.
 
@@ -10,10 +11,7 @@ geth console call:
 <pre><code> > shh.version
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) Info(ctx context.Context) (string, error)
-</code></pre>
+### info
 
 Returns the Whisper statistics for diagnostics.
 
@@ -22,10 +20,7 @@ geth console call:
 <pre><code> > shh.info
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) SetMaxMessageSize(ctx context.Context, val int) error
-</code></pre>
+### setMaxMessageSize
 
 Sets the maximal message length allowed by this node.
 
@@ -34,10 +29,7 @@ geth console call:
 <pre><code> > shh.setMaxMessageSize(999999)
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) SetMinPoW(ctx context.Context, val float64) error
-</code></pre>
+### setMinPow
 
 Sets the minimal PoW required by this node.
 
@@ -46,10 +38,7 @@ geth console call:
 <pre><code> > shh.setMinPoW(2.12)
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) MarkTrustedPeer(ctx context.Context, enode string) error
-</code></pre>
+### markTrustedPeer
 
 Marks specific peer trusted, which will allow it to send historic (expired) messages.
 
@@ -59,10 +48,7 @@ geth console call:
 
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) HasKeyPair(ctx context.Context, id string) (bool, error)
-</code></pre>
+### hasKeyPair
 
 Checks if the whisper node is configured with the private key of the specified public pair.
 
@@ -71,10 +57,7 @@ geth console call:
 <pre><code> > shh.hasKeyPair("5e57b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) DeleteKeyPair(ctx context.Context, id string) error
-</code></pre>
+### deleteKeyPair
 
 Deletes the specifies key if it exists.
 
@@ -83,10 +66,7 @@ geth console call:
 <pre><code> > shh.deleteKeyPair("5e57b9ffc2387e18636e0a3d0c56b023264c16e78a2adcba1303cefc685e610f")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) NewKeyPair(ctx context.Context) (string, error)
-</code></pre>
+### newKeyPair
 
 Generates a new cryptographic identity for the client, and injects it into the known identities for message decryption.
 
@@ -95,10 +75,7 @@ geth console call:
 <pre><code> > shh.newKeyPair()
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) GetPublicKey(ctx context.Context, id string) (hexutil.Bytes, error)
-</code></pre>
+### getPublicKey
 
 Returns the public key for identity id.
 
@@ -107,10 +84,7 @@ geth console call:
 <pre><code> > shh.getPublicKey("86e658cbc6da63120b79b5eec0c67d5dcfb6865a8f983eff08932477282b77bb")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) GetPrivateKey(ctx context.Context, id string) (string, error)
-</code></pre>
+### getPrivateKey
 
 Returns the private key for identity id.
 
@@ -119,10 +93,7 @@ geth console call:
 <pre><code> > shh.getPrivateKey("86e658cbc6da63120b79b5eec0c67d5dcfb6865a8f983eff08932477282b77bb")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) NewSymKey(ctx context.Context) (string, error)
-</code></pre>
+### newSymKey
 
 Generates a random symmetric key and stores it under id, which is then returned. Will be used in the future for session key exchange.
 
@@ -131,10 +102,7 @@ geth console call:
 <pre><code> > shh.newSymKey()
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) AddSymKey(ctx context.Context, key hexutil.Bytes) (string, error)
-</code></pre>
+### addSymKey
 
 Stores the key, and returns its id.
 
@@ -143,10 +111,7 @@ geth console call:
 <pre><code> > shh.addSymKey("0xf6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) GenerateSymKeyFromPassword(ctx context.Context, password string) (string, error)
-</code></pre>
+### generateSymKeyFromPassword
 
 Generates the key from password, stores it, and returns its id.
 
@@ -155,10 +120,7 @@ geth console call:
 <pre><code> > shh.generateSymKeyFromPassword("test")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) GetSymKey(ctx context.Context, name string) (hexutil.Bytes, error)
-</code></pre>
+### getSymKey
 
 Returns the symmetric key associated with the given id.
 
@@ -167,10 +129,7 @@ geth console call:
 <pre><code> > shh.getSymKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) HasSymKey(ctx context.Context, id string) (bool, error)
-</code></pre>
+### hasSymKey
 
 Returns true if there is a key associated with the name string. Otherwise, returns false.
 
@@ -179,7 +138,7 @@ geth console call:
 <pre><code> > shh.hasSymKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
-<hr>
+### deleteSymKey
 
 Deletes the key associated with the name string if it exists.
 
@@ -188,19 +147,16 @@ geth console call:
 <pre><code> > shh.deleteSymKey("f6dcf21ed6a17bd78d8c4c63195ab997b3b65ea683705501eae82d32667adc92")
 </code></pre>
 
-<hr>
+### getFilterMessages
 
 Retrieves all the new messages matched by a filter since the last retrieval.
 
 geth console call:
 
-<pre><code> > shh.getNewSubscriptionMessages("02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412")
+<pre><code> > shh.getFilterMessages("02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) Subscribe(args WhisperFilterArgs) (string, error)
-</code></pre>
+### newMessageFilter
 
 Creates and registers a new message filter to watch for inbound whisper messages. 
 Returns the ID of the newly created Filter.
@@ -208,51 +164,47 @@ Please see parameter description below.
 
 geth console call:
 
-<pre><code> > shh.subscribe({type: 'asym', pow: 12.3, topics: ['0x5a4ea131', '0x11223344'], key: 'b874f3bbaf031214a567485b703a025cec27d26b2c4457d6b139e56ad8734cea', sig: '0x048229fb947363cf13bb9f9532e124f08840cd6287ecae6b537cda2947ec2b23dbdc3a07bdf7cd2bfb288c25c4d0d0461d91c719da736a22b7bebbcf912298d1e6'})
+<pre><code> > shh.newMessageFilter({pow: 12.3, topics: ['0x5a4ea131', '0x11223344'], pubKey: 'b874f3bbaf031214a567485b703a025cec27d26b2c4457d6b139e56ad8734cea', sig: '0x048229fb947363cf13bb9f9532e124f08840cd6287ecae6b537cda2947ec2b23dbdc3a07bdf7cd2bfb288c25c4d0d0461d91c719da736a22b7bebbcf912298d1e6'})
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) Unsubscribe(id string) 
-</code></pre>
+### deleteMessageFilter
 
 Disables and removes an existing filter.
 
 geth console call:
 
-<pre><code> > shh.unsubscribe("02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412")
+<pre><code> > shh.deleteMessageFilter("02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412")
 </code></pre>
 
-<hr>
-
-<pre><code>func (self *PublicWhisperAPI) Post(ctx context.Context, req NewMessage) error
-</code></pre>
+### Post
 
 Creates a whisper message and injects it into the network for distribution.
 Please see parameter description below.
 
 geth console call:
 
-<pre><code> > shh.post({type: 'asym', ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', key: '0x048229fb947363cf13bb9f9532e124f08840cd6287ecae6b537cda2947ec2b23dbdc3a07bdf7cd2bfb288c25c4d0d0461d91c719da736a22b7bebbcf912298d1e6'})
+<pre><code> > shh.post({ttl: 7, topic: '0x07678231', powTarget: 2.01, powTime: 2, payload: '0x68656c6c6f', pubKey: '0x048229fb947363cf13bb9f9532e124f08840cd6287ecae6b537cda2947ec2b23dbdc3a07bdf7cd2bfb288c25c4d0d0461d91c719da736a22b7bebbcf912298d1e6'})
 </code></pre>
 
 <hr>
 
-### Parameters of Subscribe
+### Parameters of NewMessageFilter
 
-<pre><code>func (self *PublicWhisperAPI) Subscribe(args WhisperFilterArgs) (string, error)
+<pre><code>func (self *PublicWhisperAPI) NewMessageFilter(req Criteria) (string, error)
 </code></pre>
 
 The argument of Subscribe function is a JSON object with the following format:
 
-		type       string
-		key        string
-		sig        string
-		minPoW     float64
-		topics     [][]byte
-		allowP2P   bool
+	symKeyID   string
+	pubKey     []byte
+	sig        string
+	minPoW     float64
+	topics     [][]byte
+	allowP2P   bool
 
-type: Encryption type (symetric/asymmetric). The only valid values are "sym" or "asym".
+symKeyID: When using symmetric key encryption, holds the symmetric key ID.
+
+pubKey: When using asymmetric key encryption, holds the public key.
 
 key: ID of the decryption key (symmetric or asymmetric).
 
@@ -346,12 +298,12 @@ Retrieve and save your public key.
 Subcribe to messages, encrypted with certain public key.
 In this case we create the simplest possible subscription:
 
-	> f = shh.subscribe({type: 'asym', key: id})
+	> f = shh.NewMessageFilter({pubKey: id})
 	"e6b79234d9deba9f0d963e0367fd58f7e34a13dfe9b45c3876efb1dd19f9633a"
 
 or
 
-	> f = shh.subscribe({type: 'asym', key: '46af9c31a30c2eeb4e6fbb5d02a0b64b62d147e576f1503372a02d4f80ebb4e1'})
+	> f = shh.NewMessageFilter({pubKey: '46af9c31a30c2eeb4e6fbb5d02a0b64b62d147e576f1503372a02d4f80ebb4e1'})
 	"e6b79234d9deba9f0d963e0367fd58f7e34a13dfe9b45c3876efb1dd19f9633a"
 
 Advertise your public key.
@@ -360,11 +312,11 @@ In this case:
 
 Regulary poll for the messages, using the saved subscription ID.
 
-	> shh.getNewSubscriptionMessages(f)
+	> shh.getFilterMessages(f)
 
 or
 
-	> shh.getNewSubscriptionMessages('e6b79234d9deba9f0d963e0367fd58f7e34a13dfe9b45c3876efb1dd19f9633a')
+	> shh.getFilterMessages('e6b79234d9deba9f0d963e0367fd58f7e34a13dfe9b45c3876efb1dd19f9633a')
 
 result:
 
@@ -397,21 +349,21 @@ Derive symmetric key from the password, and save its ID.
 
 Subcribe to messages, encrypted with this symmetric key.
 
-	> f = shh.subscribe({type: 'sym', topics: ['0x07678231'], key: id})
+	> f = shh.subscribe({topics: ['0x07678231'], symKeyID: id})
 	"07b3ab8986aa321046010f093c8ab2ba4bd441e8435f58c7c75d5398e96faf42"
 
 or 
 
-	> f = shh.subscribe({type: 'sym', topics: ['0x07678231'], key: 'de6bc568f8601fac6ff2085d17c02754348ddbf4122ab1bd543a40c68d3a45fe'})
+	> f = shh.subscribe({topics: ['0x07678231'], symKeyID: 'de6bc568f8601fac6ff2085d17c02754348ddbf4122ab1bd543a40c68d3a45fe'})
 	"07b3ab8986aa321046010f093c8ab2ba4bd441e8435f58c7c75d5398e96faf42"
 
 Regulary poll for the messages, using the saved subscription ID.
 
-	> shh.getNewSubscriptionMessages(f)
+	> shh.getFilterMessages(f)
 
 or
 
-	> shh.getNewSubscriptionMessages('07b3ab8986aa321046010f093c8ab2ba4bd441e8435f58c7c75d5398e96faf42')
+	> shh.getFilterMessages('07b3ab8986aa321046010f093c8ab2ba4bd441e8435f58c7c75d5398e96faf42')
 
 result:
 
@@ -464,9 +416,9 @@ The peer should install the raw key:
 
 Both peers (or even multiple participants) subscribe to messages, encrypted with certain key and topic.
 
-	> f = shh.subscribe({type: 'sym', topics: ['0x07678231'],  key: id})
+	> f = shh.newMessageFilter({type: topics: ['0x07678231'],  symKeyID: id})
 	"e6b79234d9deba9f0d963e0367fd58f7e34a13dfe9b45c3876efb1dd19f9633a"
 
 Regulary poll for the messages, using the saved subscription ID.
 
-	> shh.getNewSubscriptionMessages(f)
+	> shh.getFilterMessages(f)
