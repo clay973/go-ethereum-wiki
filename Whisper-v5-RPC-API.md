@@ -571,7 +571,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"shh_subscribe","params":["messag
 // Notification Result
 {
   "jsonrpc": "2.0",
-  "method": "eth_subscription",
+  "method": "shh_subscription",
   "params": {
     subscription: "02c1f5c953804acee3b68eda6c0afe3f1b4e0bec73c7445e10d45da333616412",
     result: {
