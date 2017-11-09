@@ -14,6 +14,6 @@ The gas price oracle is a helper function of the Geth client that tries to find 
 
 The lowest acceptable price is defined as a price that could have been enough to insert a transaction into a certain block. Although this value varies slightly with the gas used by the particular transaction, it is aproximated as follows: if the block is full, it is the lowest transaction gas price found in that block. If the block is not full, it equals to gpomin.
 
-The base price is a moving value that is adjusted from block to block, up if if was lower than the lowest acceptable price, down otherwise. Note that there is a slight amount of randomness added to the correction factors so that your client will not behave absolutely predictable on the market.
+The base price is a moving value that is adjusted from block to block, up if it was lower than the lowest acceptable price, down otherwise. Note that there is a slight amount of randomness added to the correction factors so that your client will not behave absolutely predictable on the market.
 
 If you want to specify a constant for the default gas price and not use the oracle, set both gpomin and gpomax to the same value.
