@@ -57,24 +57,26 @@ To download these bundles, please head the [Go Ethereum Downloads](https://geth.
 
 ## Run inside docker container
 
-If you prefer containerized processes, you can run go-ethereum as a docker container too. We currently maintain four different docker images for running the latest stable or develop versions of Geth, on Alpine or Ubuntu based distributions:
+If you prefer containerized processes, you can run go-ethereum as a docker container too. We currently maintain four different docker images for running the latest stable or develop versions of Geth.
 
- * `ethereum/client-go:latest` is the latest stable release in an Ubuntu image
- * `ethereum/client-go:develop` is the latest develop build in an Ubuntu image
- * `ethereum/client-go:alpine` is the latest stable release in an Alpine image
- * `ethereum/client-go:alpine-develop` is the latest develop build in an Alpine image
+ * `ethereum/client-go:latest` is the latest develop version of Geth
+ * `ethereum/client-go:stable` is the latest stable version of Geth
+ * `ethereum/client-go:{version}` is the stable version of Geth at a specific version number
+ * `ethereum/client-go:release-{version}` is the latest stable version of Geth at a specific version family
 
-Unless you want to build more complex images on top of ours as a base image, we suggest downloading and using the Alpine images as they are significantly smaller than the Ubuntu counterparts:
+We also maintain four different docker images for running the latest stable or develop versions of miscellaneous Ethereum tools.
 
-```
-docker pull ethereum/client-go:alpine
-```
+ * `ethereum/client-go:alltools-latest` is the latest develop version of the Ethereum tools
+ * `ethereum/client-go:alltools-stable` is the latest stable version of the Ethereum tools
+ * `ethereum/client-go:alltools-{version}` is the stable version of the Ethereum tools at a specific version number
+ * `ethereum/client-go:alltools-release-{version}` is the latest stable version of the Ethereum tools at a specific version family
 
-The image has three ports automatically exposed:
+The image has the following ports automatically exposed:
 
- * `8545` used by the HTTP based JSON RPC API
- * `8546` used by the WebSocket based JSON RPC API
- * `30303` used by the P2P protocol running the network
+ * `8545` TCP, used by the HTTP based JSON RPC API
+ * `8546` TCP, used by the WebSocket based JSON RPC API
+ * `30303` TCP and UDP, used by the P2P protocol running the network
+ * `30304` UDP, used by the P2P protocol's new peer discovery overlay
 
 *Note, if you are running an Ethereum client inside a docker container, you might want to mount in a data volume as the client's data directory (located at `/root/.ethereum` inside the container) to ensure that downloaded data is preserved between restarts and/or container life-cycles.*
 
