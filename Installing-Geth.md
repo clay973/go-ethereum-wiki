@@ -82,7 +82,7 @@ The image has the following ports automatically exposed:
 
 ## Build it from source code
 
-Go Ethereum (as its name implies) is written in [Go](https://golang.org), and as such to build from source code you'll need to ensure that you have at least Go 1.5 installed (preferably the latest version, currently at 1.7). This guide will not go into details on how to install Go itself, for that please consult the [Go installation instructions](https://golang.org/doc/install) and grab any needed bundles from the [Go download page](https://golang.org/dl/).
+Go Ethereum (as its name implies) is written in [Go](https://golang.org), and as such to build from source code you'll need to ensure that you have at least Go 1.7 installed (preferably the latest version, currently at 1.9.2). This guide will not go into details on how to install Go itself, for that please consult the [Go installation instructions](https://golang.org/doc/install) and grab any needed bundles from the [Go download page](https://golang.org/dl/).
 
 Assuming you have Go installed, you can download our project via:
 
