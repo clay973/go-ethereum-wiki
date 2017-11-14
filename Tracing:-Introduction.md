@@ -22,3 +22,32 @@ Depending on your node's mode of synchronization and pruning, different configur
  * A **light synced** node retrieving data **on demand** can in theory trace transactions for which all required historical state is readily available in the network. In practice, data availability is **not** a feasible assumption.
 
 *There are exceptions to the above rules when running batch traces of entire blocks or chain segments. Those will be detailed later.*
+
+## Raw EVM traces
+
+The simplest type of transaction trace that `go-ethereum` can generate are raw EVM opcode traces. For every VM instruction the transaction executes, a structured log entry is emitted, containing all contextual metadata deemed useful. This includes the *program counter*, *opcode name*, *opcode cost*, *remaining gas*, *execution depth* and any *occurred error*. The structured logs can optionally also contain the content of the *execution stack*, *execution memory* and *contract storage*.
+
+An example log entry for a single opcode looks like:
+
+```json
+{
+	"pc":      48,
+	"op":      "DIV",
+	"gasCost": 5,
+	"gas":     64532,
+	"depth":   1,
+	"error":   null,
+	"stack": [
+		"00000000000000000000000000000000000000000000000000000000ffffffff",
+		"0000000100000000000000000000000000000000000000000000000000000000",
+		"2df07fbaabbe40e3244445af30759352e348ec8bebd4dd75467a9f29ec55d98d"
+	],
+	"memory": [
+		"0000000000000000000000000000000000000000000000000000000000000000",
+		"0000000000000000000000000000000000000000000000000000000000000000",
+		"0000000000000000000000000000000000000000000000000000000000000060"
+	],
+	"storage": {
+	}
+}
+```
