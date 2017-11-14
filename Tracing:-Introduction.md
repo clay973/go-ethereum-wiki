@@ -1,0 +1,5 @@
+There are two different types of transactions in Ethereum: plain value transfers and contract executions. A plain value transfer just moves Ether from one account to another and as such is uninteresting from this guide's perspective. If however the recipient of a transaction is a contract account with associated EVM (Ethereum Virtual Machine) bytecode – beside transferring any Ether – the code will also be executed as part of the transaction.
+
+Having code associated with Ethereum accounts permits transactions to do arbitrarilly complex data storage and enables them to act on the previously stored data by further transacting internally with outside accounts and contracts. This creates an intertwined ecosystem of contracts, where a single transaction can interact with tens or hunderds of accounts.
+
+The downside of contract execution is that it is very hard to say what a transaction actually did. A transaction receipt does contain a status code to check whether execution succeeded or not, but there's no way to see what data was modified, nor what external contracts where invoked. In order to introspect a transaction, we need to trace its execution.
