@@ -77,7 +77,7 @@ The same call can of course be invoked from outside the node too via HTTP RPC. I
 
 ```
 $ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceTransaction", "params": ["0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f"]}' localhost:8545
-````traceTransaction`
+```
 
 Running the above operation on the Rinkeby network (with a node retaining enough history) will result in [this trace dump](https://gist.github.com/karalabe/c91f95ac57f5e57f8b950ec65ecc697f).
 
