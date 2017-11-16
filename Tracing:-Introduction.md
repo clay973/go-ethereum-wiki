@@ -106,3 +106,9 @@ $ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceT
 ```
 
 Running the above operation on the Rinkeby network will result in this significantly shorter [trace dump](https://gist.github.com/karalabe/d74a7cb33a70f2af75e7824fc772c5b4).
+
+### Limits of basic traces
+
+Although the raw opcode traces we've generated above have their use, this basic way of tracing is problematic in real world scenarios. Having an individual log entry for every single opcode is too low level for most use cases, and will require developers to create additional tools to post-process the traces. Additionally, a full opcode trace can easily go into the hundreds of megabytes (or even gigabytes for spam transactions), making them very resource intensive to get out of the node and process externally.
+
+To avoid all of the previously mentioned issues, `go-ethereum` supports running custom JavaScript tracers *within* the Ethereum node, which have full access to the EVM stack, memory and contract storage. This permits developers to only gather the data they need, and do any processing **at** the data, instead of wasting resources on pulling them from the node.
