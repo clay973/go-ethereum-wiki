@@ -65,9 +65,9 @@ The entire output of an raw EVM opcode trace is a JSON object having a few metad
 
 ### Generating basic traces
 
-To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoints](https://github.com/ethereum/go-ethereum/wiki/Management-APIs), out of which the most commonly used is [`debug_traceTransaction`](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#debug_tracetransaction). In its simplest form, this method accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object.
+To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoints](https://github.com/ethereum/go-ethereum/wiki/Management-APIs), out of which the most commonly used is [`debug_traceTransaction`](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#debug_tracetransaction). 
 
-A sample invocation from the Geth console would be:
+In its simplest form, `traceTransaction` accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object. A sample invocation from the Geth console would be:
 
 ```
 debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f")
@@ -77,7 +77,7 @@ The same call can of course be invoked from outside the node too via HTTP RPC. I
 
 ```
 $ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceTransaction", "params": ["0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f"]}' localhost:8545
-```
+````traceTransaction`
 
 Running the above operation on the Rinkeby network (with a node retaining enough history) will result in [this trace dump](https://gist.github.com/karalabe/c91f95ac57f5e57f8b950ec65ecc697f).
 
