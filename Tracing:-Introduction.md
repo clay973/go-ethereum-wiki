@@ -65,7 +65,9 @@ The entire output of an raw EVM opcode trace is a JSON object having a few metad
 
 ### Generating basic traces
 
-To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoints](https://github.com/ethereum/go-ethereum/wiki/Management-APIs), out of which the most commonly used is [`debug_traceTransaction`](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#debug_tracetransaction). In its simplest form, `traceTransaction` accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object. A sample invocation from the Geth console would be:
+To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoints](https://github.com/ethereum/go-ethereum/wiki/Management-APIs), out of which the most commonly used is [`debug_traceTransaction`](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#debug_tracetransaction). In its simplest form, this method accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object.
+
+A sample invocation from the Geth console would be:
 
 ```
 debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f")
