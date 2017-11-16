@@ -93,13 +93,13 @@ By default the raw opcode tracer emits all relevant events that occur within the
 }
 ```
 
-Running the previous tracer invocation from the Geth console with the data fields disabled would be:
+Running the previous tracer invocation from the Geth console with the data fields disabled:
 
 ```
 debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f", {disableStack: true, disableMemory: true, disableStorage: true})
 ```
 
-And analogously, using the HTTP RPC API:
+Analogously running the filtered tracer from outside the node too via HTTP RPC:
 
 ```
 $ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceTransaction", "params": ["0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f", {"disableStack": true, "disableMemory": true, "disableStorage": true}]}' localhost:8545
