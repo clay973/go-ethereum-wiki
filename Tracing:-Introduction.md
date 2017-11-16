@@ -79,8 +79,30 @@ The same call can of course be invoked from outside the node too via HTTP RPC. I
 $ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceTransaction", "params": ["0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f"]}' localhost:8545
 ```
 
-Running the above operation on the Rinkeby network (with a node retaining enough history) will result in [this trace dump](https://gist.github.com/karalabe/c91f95ac57f5e57f8b950ec65ecc697f).
+Running the above operation on the Rinkeby network (with a node retaining enough history) will result in this [trace dump](https://gist.github.com/karalabe/c91f95ac57f5e57f8b950ec65ecc697f).
 
 ### Tuning basic traces
 
-By default the raw opcode traces try to emit all events that occur within the EVM, whils
+By default the raw opcode tracer emits all relevant events that occur within the EVM while processing a transaction, such as *EVM stack*, *EVM memory* and *updated storage slots*. Certain use cases however may not need some of these data fields reported. To cater for those use cases, these massive fields may be omitted using a second *options* parameter for the tracer:
+
+```json
+{
+	"disableStack": true,
+	"disableMemory": true,
+	"disableStorage": true
+}
+```
+
+Running the previous tracer invocation from the Geth console with the data fields disabled would be:
+
+```
+debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f", {disableStack: true, disableMemory: true, disableStorage: true})
+```
+
+And analogously, using the HTTP RPC API:
+
+```
+$ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceTransaction", "params": ["0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f", {"disableStack": true, "disableMemory": true, "disableStorage": true}]}' localhost:8545
+```
+
+Running the above operation on the Rinkeby network will result in this significantly shorter [trace dump](https://gist.github.com/karalabe/d74a7cb33a70f2af75e7824fc772c5b4).
