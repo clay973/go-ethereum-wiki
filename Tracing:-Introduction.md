@@ -81,6 +81,6 @@ $ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceT
 
 Running the above operation on the Rinkeby network (with a node retaining enough history) will result in [this trace dump](https://gist.github.com/karalabe/c91f95ac57f5e57f8b950ec65ecc697f).
 
-#### Tuning basic tracing
+### Tuning basic traces
 
-By default the raw opcode traces 
+By default the raw opcode traces try to emit all events that occur within the EVM, whils
