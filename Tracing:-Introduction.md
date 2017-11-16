@@ -51,3 +51,37 @@ An example log entry for a single opcode looks like:
 	}
 }
 ```
+
+The entire output of an raw EVM opcode trace is a JSON object having a few metadata fields: *consumed gas*, *failure status*, *return value*; and a list of *opcode entries* that take the above form:
+
+```json
+{
+	"gas":         25523,
+	"failed":      false,
+	"returnValue": "",
+	"structLogs":  []
+}
+```
+
+### Generating the traces
+
+To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoints](https://github.com/ethereum/go-ethereum/wiki/Management-APIs), out of which the most commonly used is [`debug_traceTransaction`](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#debug_tracetransaction):
+
+> The `traceTransaction` debugging method will attempt to run the transaction in the exact same manner as it was executed on the network. It will replay any transaction that may have been executed prior to this one before it will finally attempt to execute the transaction that corresponds to the given hash.
+
+In its simplest form, `traceTransaction` accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object. A sample invocation from the Geth console would be:
+
+```
+debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f")
+```
+
+The same call can of course be invoked from outside the node too via HTTP RPC. In this case, please make sure the HTTP endpoint is enabled via `--rpc` and the `debug` API namespace exposed via `--rpcapi=debug`.
+
+```
+$ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceTransaction", "params": ["0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f"]}' localhost:8545
+```
+
+Running the above trace operation on the Rinkeby network (with a node retaining that part of the history) will result in [this trace dump](https://gist.github.com/karalabe/c91f95ac57f5e57f8b950ec65ecc697f).
+
+### Optional tracing parameters
+
