@@ -23,7 +23,7 @@ Depending on your node's mode of synchronization and pruning, different configur
 
 *There are exceptions to the above rules when running batch traces of entire blocks or chain segments. Those will be detailed later.*
 
-## Basic EVM traces
+## Basic traces
 
 The simplest type of transaction trace that `go-ethereum` can generate are raw EVM opcode traces. For every VM instruction the transaction executes, a structured log entry is emitted, containing all contextual metadata deemed useful. This includes the *program counter*, *opcode name*, *opcode cost*, *remaining gas*, *execution depth* and any *occurred error*. The structured logs can optionally also contain the content of the *execution stack*, *execution memory* and *contract storage*.
 
