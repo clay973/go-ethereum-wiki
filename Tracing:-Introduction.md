@@ -69,7 +69,7 @@ To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoi
 
 In its simplest form, `traceTransaction` accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object. A sample invocation from the Geth console would be:
 
-```
+```js
 debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f")
 ```
 
@@ -95,7 +95,7 @@ By default the raw opcode tracer emits all relevant events that occur within the
 
 Running the previous tracer invocation from the Geth console with the data fields disabled:
 
-```
+```js
 debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f", {disableStack: true, disableMemory: true, disableStorage: true})
 ```
 
