@@ -23,7 +23,7 @@ Depending on your node's mode of synchronization and pruning, different configur
 
 *There are exceptions to the above rules when running batch traces of entire blocks or chain segments. Those will be detailed later.*
 
-## Raw EVM traces
+## Basic EVM traces
 
 The simplest type of transaction trace that `go-ethereum` can generate are raw EVM opcode traces. For every VM instruction the transaction executes, a structured log entry is emitted, containing all contextual metadata deemed useful. This includes the *program counter*, *opcode name*, *opcode cost*, *remaining gas*, *execution depth* and any *occurred error*. The structured logs can optionally also contain the content of the *execution stack*, *execution memory* and *contract storage*.
 
@@ -63,13 +63,9 @@ The entire output of an raw EVM opcode trace is a JSON object having a few metad
 }
 ```
 
-### Generating the traces
+### Generating basic traces
 
-To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoints](https://github.com/ethereum/go-ethereum/wiki/Management-APIs), out of which the most commonly used is [`debug_traceTransaction`](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#debug_tracetransaction):
-
-> The `traceTransaction` debugging method will attempt to run the transaction in the exact same manner as it was executed on the network. It will replay any transaction that may have been executed prior to this one before it will finally attempt to execute the transaction that corresponds to the given hash.
-
-In its simplest form, `traceTransaction` accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object. A sample invocation from the Geth console would be:
+To generate a raw EVM opcode trace, `go-ethereum` provides a few [RPC API endpoints](https://github.com/ethereum/go-ethereum/wiki/Management-APIs), out of which the most commonly used is [`debug_traceTransaction`](https://github.com/ethereum/go-ethereum/wiki/Management-APIs#debug_tracetransaction). In its simplest form, `traceTransaction` accepts a transaction hash as its sole argument, traces the transaction, aggregates all the generated data and returns it as a **large** JSON object. A sample invocation from the Geth console would be:
 
 ```
 debug.traceTransaction("0xfc9359e49278b7ba99f59edac0e3de49956e46e530a53c15aa71226b7aa92c6f")
@@ -83,5 +79,6 @@ $ curl -H "Content-Type: application/json" -d '{"id": 1, "method": "debug_traceT
 
 Running the above operation on the Rinkeby network (with a node retaining enough history) will result in [this trace dump](https://gist.github.com/karalabe/c91f95ac57f5e57f8b950ec65ecc697f).
 
-### Optional tracing parameters
+#### Tuning basic tracing
 
+By default the raw opcode traces 
