@@ -1,7 +1,5 @@
 [Main Ethereum Wiki](https://github.com/ethereum/wiki/wiki)
 
-[Frontier Release](https://github.com/ethereum/go-ethereum/wiki/Frontier)
-
 ### Install and build  
 
 [Installing Ethereum](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum)
@@ -13,8 +11,6 @@
 [Managing Accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
 
 [Mining](https://github.com/ethereum/go-ethereum/wiki/Mining)
-
-[Contracts and transactions](https://github.com/ethereum/go-ethereum/wiki/Contracts-and-Transactions)
 
 [Contract Tutorial](https://github.com/ethereum/go-ethereum/wiki/Contract-Tutorial)
 
@@ -43,7 +39,3 @@
 [Mobile Clients](https://github.com/ethereum/go-ethereum/wiki/Mobile-Clients:-Libraries-and-Inproc-Ethereum-Nodes)
 
 [Native DApps](https://github.com/ethereum/go-ethereum/wiki/Native-DApps:-Go-bindings-to-Ethereum-contracts)
-
-### Legacy
-
-[Legacy pages](https://github.com/ethereum/go-ethereum/wiki/Legacy)

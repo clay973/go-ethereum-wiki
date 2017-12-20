@@ -75,7 +75,7 @@ After you successfully mined some blocks, you can check the ether balance of you
 '34698870000000' 
 ```
 
-In order to spend your earnings [on gas to transact](https://github.com/ethereum/go-ethereum/wiki/Contracts-and-Transactions), you will need to have this account unlocked. 
+In order to spend your earnings you will need to have this account unlocked.
 
 ```
 > personal.unlockAccount(eth.coinbase)

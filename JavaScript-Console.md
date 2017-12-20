@@ -50,8 +50,6 @@ Or execute a local script with more complex statements on a remote node over htt
     $ geth --exec 'loadScript("/tmp/checkbalances.js")' attach http://123.123.123.123:8545
     $ geth --jspath "/tmp" --exec 'loadScript("checkbalances.js")' attach http://123.123.123.123:8545
 
-Find an example script [here](https://github.com/ethereum/go-ethereum/wiki/Contracts-and-Transactions#example-script)
-
 Use the `--jspath <path/to/my/js/root>` to set a libdir for your js scripts. Parameters to `loadScript()` with no absolute path will be understood relative to this directory.
 
 You can exit the console cleanly by typing `exit` or simply with `CTRL-C`.

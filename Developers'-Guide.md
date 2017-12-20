@@ -80,8 +80,6 @@ go test -v -cpu 4 -bench . -run BenchmarkJoin
 
 for more see [go test flags](http://golang.org/cmd/go/#hdr-Description_of_testing_flags)
 
-See integration testing information on the [Testing wiki page](https://github.com/ethereum/go-ethereum/wiki/Testing)
-
 ### Metrics and monitoring
 
 `geth` can do node behaviour monitoring, aggregation and show performance metric charts. 

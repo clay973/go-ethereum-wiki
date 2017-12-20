@@ -31,7 +31,6 @@ Developers and community enthusiast are advised to read the [Developers' Guide](
 
 * [Managing accounts](https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts)
 * [Mining](https://github.com/ethereum/go-ethereum/wiki/mining)
-* [Contracts and Transactions](https://github.com/ethereum/go-ethereum/wiki/Contracts-and-Transactions)
 
 **Note** buying and selling ether through exchanges is not discussed here. 
 
