@@ -26,8 +26,6 @@
 
 ### Issues
 
-[Troubleshooting](https://github.com/ethereum/go-ethereum/wiki/Troubleshooting)
-
 [FAQ](https://github.com/ethereum/go-ethereum/wiki/FAQ)
 
 [Reporting issues](https://github.com/ethereum/go-ethereum/wiki/geth#reporting)

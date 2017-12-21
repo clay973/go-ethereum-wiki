@@ -36,10 +36,6 @@ Developers and community enthusiast are advised to read the [Developers' Guide](
 
 The Ethereum Core Protocol licensed under the [GNU Lesser General Public License](https://www.gnu.org/licenses/lgpl.html). All frontend client software (under [cmd](https://github.com/ethereum/go-ethereum/tree/develop/cmd)) is licensed under the [GNU General Public License](https://www.gnu.org/copyleft/gpl.html).
 
-## Troubleshooting
-
-If something went wrong first read our [Troubleshooting](https://github.com/ethereum/go-ethereum/wiki/Troubleshooting) checklist as well as the [FAQ](https://github.com/ethereum/go-ethereum/wiki/Troubleshooting). If you still didn't find your answer please open an issue on GitHub or contact our help desk on helpdesk@ethereum.org.
-
 ## Reporting 
 
 Security issues are best sent to security@ethereum.org or shared in PM with devs on one of the channels (see Community and Suppport).
