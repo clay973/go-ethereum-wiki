@@ -1,5 +1,3 @@
-# Code Review Guidelines
-
 The only way to get code into go-ethereum is to send a pull request. Those pull requests
 need to be reviewed by someone. This document is a guide that explains our expectations
 around PRs for both authors and reviewers.
@@ -10,10 +8,9 @@ around PRs for both authors and reviewers.
   GitHub.
 * The **team** consists of people with commit rights on the go-ethereum repository.
 * **project admins** are people with merge rights on the go-ethereum repository.
-* The **reviewer** is the person who is assigned to review the diff. The reviewer must be
-  a team member.
-* The **code owner** is the person who is responsible for the subsystem being modified by
-  the PR.
+* The **reviewer** is the person assigned to review the diff. The reviewer must be a team
+  member.
+* The **code owner** is the person responsible for the subsystem being modified by the PR.
 
 ## The Process
 
@@ -34,13 +31,13 @@ When communicating with authors, be polite and respectful.
 
 We expect `gofmt`ed code. For contributions of significant size, we expect authors to
 understand and use the guidelines in [Effective Go][effgo]. Authors should avoid common
-mistakes explained in the [Go Code Review Comments Page][revcomment].
+mistakes explained in the [Go Code Review Comments][revcomment] page.
 
-### Functional checks
+### Functional Checks
 
 For PRs that fix an issue, reviewers should try reproduce the issue and verify that the
 pull request actually fixes it. Authors can help with this by including a unit test that
-fails without, and passes with the change.
+fails without (and passes with) the change.
 
 For PRs adding new features, reviewers should attempt to use the feature and comment on
 how it feels to use it. Example: if a PR adds a new command line flag, use the program
@@ -55,15 +52,14 @@ Code submitted must pass all unit tests and static analysis ("lint") checks. We 
 CI to test code on Linux, macOS and AppVeyor to test code on Microsoft Windows.
 
 For failing CI builds, the issue may not be related to the PR itself. Such failures are
-usually related to flakey tests. These issues can be ignored (authors don't need to fix
+usually related to flakey tests. These failures can be ignored (authors don't need to fix
 unrelated issues), but please file a GH issue so the test gets fixed eventually.
 
 ### Commit Messages
 
-Commit messages on the master branch should follow the guidelines below. Note that authors
-don't really need to adhere to these guidelines because the message can be modified at
-merge time. Enforcing commit message style is the responsibility of the person merging the
-PR.
+Commit messages on the master branch should follow the rule below. PR authors are not
+required to use any particular style because the message can be modified at merge time.
+Enforcing commit message style is the responsibility of the person merging the PR.
 
 The commit message style we use is similar to the style used by the Go project:
 
