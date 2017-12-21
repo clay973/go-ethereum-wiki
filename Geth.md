@@ -1,5 +1,3 @@
-# Geth
-
 `geth` is the the command line interface for running a full ethereum node implemented in Go. 
 It is the main deliverable of the [Frontier Release](https://github.com/ethereum/go-ethereum/wiki/Frontier)
 

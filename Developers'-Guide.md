@@ -1,8 +1,6 @@
 **NOTE: These instructions are for people who want to contribute Go source code changes.
 If you just want to run ethereum, use the normal [Installation Instructions](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum)**
 
-# Developers' guide 
-
 This document is the entry point for developers of the Go implementation of Ethereum. Developers here refer to the hands-on: who are interested in build, develop, debug, submit a bug report or pull request or contribute code to go-ethereum.
 
 ## Building and Testing

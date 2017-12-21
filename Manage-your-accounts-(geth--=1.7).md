@@ -1,5 +1,3 @@
-# Managing accounts
-
 **WARNING**
 Remember your password. 
 

@@ -1,5 +1,3 @@
-# Connecting to the network 
-
 ## How Peers Are Found
 
 Geth continuously attempts to connect to other nodes on the network
