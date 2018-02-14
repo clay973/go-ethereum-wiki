@@ -7,7 +7,6 @@ around PRs for both authors and reviewers.
 * The **author** of a pull request is the entity who wrote the diff and submitted it to
   GitHub.
 * The **team** consists of people with commit rights on the go-ethereum repository.
-* **project admins** are people with merge rights on the go-ethereum repository.
 * The **reviewer** is the person assigned to review the diff. The reviewer must be a team
   member.
 * The **code owner** is the person responsible for the subsystem being modified by the PR.
@@ -23,7 +22,7 @@ part.
 
 We expect that reviewers check the style and functionality of the PR, providing comments
 to the author using the GitHub review system. Reviewers should follow up with the PR until
-it is in good shape, then **approve** the PR. Approved PRs are merged by project admins.
+it is in good shape, then **approve** the PR. Approved PRs can be merged by any code owner.
 
 When communicating with authors, be polite and respectful.
 
