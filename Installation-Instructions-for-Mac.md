@@ -46,4 +46,10 @@ cd go-ethereum
 make geth
 ```
 
+If you see some errors related to header files of Mac OS system library, install XCode Command Line Tools, and try again.
+
+```shell
+xcode-select --install
+```
+
 You can now run `build/bin/geth` to start your node.
