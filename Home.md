@@ -17,5 +17,3 @@ Main entry points:
 
 Sidebar lists all pages.
 =======
-This is the Wiki on the uneditable repo
->>>>>>> upstream/master
