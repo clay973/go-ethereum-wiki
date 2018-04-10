@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 * Line added for testing pull by clay973
+=======
+* Test line added in publicly editable repo
+>>>>>>> c3973d1ce3bcd4bd997589b540aa21dc106472fc
 * User documentation can be found at our [Ethereum User Guide and reference manual](http://ethereum.gitbooks.io/frontier-guide/content/).
 * For the API reference and developer documentation head over to the auto generated [GoDoc](https://godoc.org/github.com/ethereum/go-ethereum) documentation.
 
