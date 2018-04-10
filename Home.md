@@ -1,3 +1,4 @@
+* SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM
 * Test line added in publicly editable repo
 * Another line added for test
 * User documentation can be found at our [Ethereum User Guide and reference manual](http://ethereum.gitbooks.io/frontier-guide/content/).
